@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tns="urn:http-tounsi:codes">
+  <soap:Header/>
+  <soap:Body>{% if fault %}
+    <soap:Fault>
+      <faultcode>{{ fault.code }}</faultcode>
+      <faultstring>{{ fault.message }}</faultstring>
+    </soap:Fault>{% else %}
+    <tns:GetCodeResponse>
+      <tns:StatusCode>
+        <tns:Code>{{ c.code }}</tns:Code>
+        <tns:NomOfficiel>{{ c.nom_officiel }}</tns:NomOfficiel>
+        <tns:TitreDerja>{{ c.titre_derja }}</tns:TitreDerja>
+        <tns:Situation>{{ c.situation }}</tns:Situation>
+        <tns:ExplicationTechnique>{{ c.explication_technique }}</tns:ExplicationTechnique>
+        <tns:Famille>{{ c.famille }}</tns:Famille>
+        <tns:ImageUrl>{{ image_url|default:"" }}</tns:ImageUrl>
+      </tns:StatusCode>
+    </tns:GetCodeResponse>{% endif %}
+  </soap:Body>
+</soap:Envelope>

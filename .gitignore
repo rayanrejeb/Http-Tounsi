@@ -1,0 +1,19 @@
+# Python / Django
+.venv/
+__pycache__/
+*.pyc
+db.sqlite3
+
+# Originaux des images (seuls les .webp optimisés sont utilisés par le site)
+static/img/_originaux/
+
+# Notes de travail
+CONCEPT.md
+CLAUDE.md
+.claude/
+
+# Éditeurs / OS
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini

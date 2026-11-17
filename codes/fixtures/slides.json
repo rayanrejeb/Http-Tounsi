@@ -1,0 +1,112 @@
+[
+  {
+    "model": "codes.slide",
+    "pk": 1,
+    "fields": {
+      "numero": 1,
+      "titre": "HTTP Tounsi",
+      "contenu": "Les services web racontés avec des situations tunisiennes.\nIci, même la navigation est une requête HTTP : flèche → et la barre tape la requête toute seule.\n> GET /api/slides/2/",
+      "image": "hero"
+    }
+  },
+  {
+    "model": "codes.slide",
+    "pk": 2,
+    "fields": {
+      "numero": 2,
+      "titre": "Zouz machines yetkalmou",
+      "contenu": "Un **service web**, c'est une application qui offre ses fonctions à d'autres machines via le réseau.\n- Le **client** envoie une requête : méthode + URL + en-têtes + body\n- Le **serveur** renvoie une réponse : code de statut + en-têtes + body\n- Peu importe le langage : un téléphone en Kotlin parle à un serveur en Python\n> GET /api/codes/200/",
+      "image": "services-web"
+    }
+  },
+  {
+    "model": "codes.slide",
+    "pk": 3,
+    "fields": {
+      "numero": 3,
+      "titre": "El garçon de café",
+      "contenu": "Une **API**, c'est le garçon de café.\n- Toi à la table = le **client**\n- Le garçon = l'**API**\n- La cuisine = le **serveur** et la base de données\n- La carte = la **documentation**\nTu ne rentres jamais dans la cuisine : tu commandes, le garçon ramène.\n> GET /api/codes/",
+      "image": "api"
+    }
+  },
+  {
+    "model": "codes.slide",
+    "pk": 4,
+    "fields": {
+      "numero": 4,
+      "titre": "SOAP vs REST : l'idara face à WhatsApp",
+      "contenu": "**SOAP** (services web étendus) : un protocole formel. Enveloppe XML obligatoire, contrat WSDL. Formulaires et tampons, comme à l'administration.\n**REST** : un style d'architecture. Une ressource = une URL, un verbe HTTP, sans état. Court et direct, comme un message WhatsApp.\n> POST /soap/codes/ <soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tns=\"urn:http-tounsi:codes\"><soap:Body><tns:GetCode><tns:Code>404</tns:Code></tns:GetCode></soap:Body></soap:Envelope>\n> GET /soap/codes/?wsdl\n**Code introuvable :** SOAP répond **500** avec une `soap:Fault`, REST répond simplement **404**.\n> POST /soap/codes/ <soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tns=\"urn:http-tounsi:codes\"><soap:Body><tns:GetCode><tns:Code>999</tns:Code></tns:GetCode></soap:Body></soap:Envelope>\n> GET /api/codes/999/",
+      "image": "soap-rest"
+    }
+  },
+  {
+    "model": "codes.slide",
+    "pk": 5,
+    "fields": {
+      "numero": 5,
+      "titre": "XML vs JSON",
+      "contenu": "La même fiche, deux formats. Compare la **taille en octets** dans la vue brute.\n- **XML** : balises ouvrantes et fermantes, verbeux mais très structuré\n- **JSON** : objets et tableaux, léger, natif en JavaScript\n> GET /api/codes/404/?format=json\n> GET /api/codes/404/?format=xml",
+      "image": "xml-json"
+    }
+  },
+  {
+    "model": "codes.slide",
+    "pk": 6,
+    "fields": {
+      "numero": 6,
+      "titre": "Django REST Framework",
+      "contenu": "DRF transforme un projet Django en API REST.\n- **Serializer** : objet Python ⇄ JSON ou XML\n- **ModelViewSet** : tout le CRUD en une seule classe\n- **Router** : génère les URL tout seul\n- **Permissions**, **throttling**, **renderers** : déjà inclus\n- Une **interface navigable** dans le navigateur, gratuite\n> GET /api/codes/",
+      "image": ""
+    }
+  },
+  {
+    "model": "codes.slide",
+    "pk": 7,
+    "fields": {
+      "numero": 7,
+      "titre": "Les verbes HTTP",
+      "contenu": "- **GET** : lire\n- **POST** : créer\n- **PUT** : remplacer toute la fiche. Repeindre tout le mur.\n- **PATCH** : changer un seul champ. Retoucher une tache.\n- **DELETE** : supprimer\nPUT, PATCH et DELETE demandent le token admin (**Alt+A**).\n> PUT /api/codes/404/ {\"code\": 404, \"nom_officiel\": \"Not Found\", \"titre_derja\": \"Mal9itouch\", \"situation\": \"Le prof cherche ta copie d'examen : elle n'a jamais existé.\", \"explication_technique\": \"Aucune ressource ne correspond à cette URL.\"}\n> PATCH /api/codes/404/ {\"titre_derja\": \"Mal9itha !\"}\n> DELETE /api/codes/",
+      "image": "verbes"
+    }
+  },
+  {
+    "model": "codes.slide",
+    "pk": 8,
+    "fields": {
+      "titre": "Tokens et JWT : la carte d'étudiant",
+      "image": "token",
+      "contenu": "HTTP est **sans état** : le serveur ne se souvient pas de toi. À chaque requête, tu remontres ta carte dans l'en-tête `Authorization`, comme devant le gardien de l'université.\n- **Token DRF** (celui de cette appli) : une clé aléatoire de 40 caractères, rangée en base. Le serveur la cherche à chaque requête : `Authorization: Token 9f2c…`\n- **JWT** (JSON Web Token) : `header.payload.signature` en Base64. Le serveur ne stocke rien, il vérifie la signature : `Authorization: Bearer eyJhbGciOi…`\n- Le payload d'un JWT est **signé, pas chiffré** : tout le monde peut le lire (id, rôle, expiration). Jamais de mot de passe dedans.\n**401** : pas de carte, le gardien ne sait pas qui tu es. **403** : il te reconnaît, mais ce n'est pas pour toi.\nOn crée le code 420, puis le même DELETE : sans token, avec **Alt+E** (étudiant), puis **Alt+A** (admin).\n> POST /api/codes/ {\"code\": 420, \"nom_officiel\": \"Enhance Your Calm\", \"titre_derja\": \"Ched a3sabek\", \"situation\": \"Le chauffeur de louage klaxonne depuis dix minutes.\", \"propose_par\": \"La salle\"}\n> DELETE /api/codes/420/",
+      "numero": 8
+    }
+  },
+  {
+    "model": "codes.slide",
+    "pk": 9,
+    "fields": {
+      "numero": 9,
+      "titre": "Les familles de codes",
+      "contenu": "Le premier chiffre te dit déjà à qui la faute.",
+      "image": "familles"
+    }
+  },
+  {
+    "model": "codes.slide",
+    "pk": 10,
+    "fields": {
+      "numero": 10,
+      "titre": "GraphQL : le casse-croûte à la carte",
+      "contenu": "REST te sert le **complet** : toute la fiche, que tu la veuilles ou non.\nAvec **GraphQL**, tu choisis exactement les champs, sur un seul endpoint.\n> POST /graphql/ {\"query\": \"{ code(code: 404) { titreDerja imageUrl } }\"}",
+      "image": "graphql"
+    }
+  },
+  {
+    "model": "codes.slide",
+    "pk": 11,
+    "fields": {
+      "numero": 11,
+      "titre": "Ya3tikom essa7a",
+      "contenu": "Merci pour votre attention !\nPour fermer proprement la présentation :\n> DELETE /api/presentation/",
+      "image": "fin"
+    }
+  }
+]

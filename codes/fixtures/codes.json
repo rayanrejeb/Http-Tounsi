@@ -1,0 +1,226 @@
+[
+  {
+    "model": "codes.statuscode",
+    "pk": 1,
+    "fields": {
+      "code": 200,
+      "nom_officiel": "OK",
+      "titre_derja": "Behi, ya3tik essa7a",
+      "situation": "Le garçon de café ramène exactement ton capucin.",
+      "explication_technique": "La requête a réussi : le serveur renvoie la ressource demandée dans le body.",
+      "famille": "2xx",
+      "propose_par": null,
+      "cree_le": "2026-11-17T09:00:00+01:00"
+    }
+  },
+  {
+    "model": "codes.statuscode",
+    "pk": 2,
+    "fields": {
+      "code": 201,
+      "nom_officiel": "Created",
+      "titre_derja": "Mabrouk, t3mal !",
+      "situation": "Après six allers-retours, l'employé tamponne enfin ton papier.",
+      "explication_technique": "Une nouvelle ressource a été créée, en général après un POST. L'en-tête Location donne son URL.",
+      "famille": "2xx",
+      "propose_par": null,
+      "cree_le": "2026-11-17T09:00:00+01:00"
+    }
+  },
+  {
+    "model": "codes.statuscode",
+    "pk": 3,
+    "fields": {
+      "code": 204,
+      "nom_officiel": "No Content",
+      "titre_derja": "Walou",
+      "situation": "Tu ouvres le frigo : vide, à part un pot de harissa.",
+      "explication_technique": "La requête a réussi mais il n'y a rien à renvoyer : body vide. Classique après un DELETE.",
+      "famille": "2xx",
+      "propose_par": null,
+      "cree_le": "2026-11-17T09:00:00+01:00"
+    }
+  },
+  {
+    "model": "codes.statuscode",
+    "pk": 4,
+    "fields": {
+      "code": 301,
+      "nom_officiel": "Moved Permanently",
+      "titre_derja": "El 7anout bdal blastou",
+      "situation": "L'épicier a déménagé en face.",
+      "explication_technique": "La ressource a changé d'adresse pour toujours. L'en-tête Location donne la nouvelle URL et le client la suit tout seul.",
+      "famille": "3xx",
+      "propose_par": null,
+      "cree_le": "2026-11-17T09:00:00+01:00"
+    }
+  },
+  {
+    "model": "codes.statuscode",
+    "pk": 5,
+    "fields": {
+      "code": 304,
+      "nom_officiel": "Not Modified",
+      "titre_derja": "Nafs el 7aja",
+      "situation": "Le couscous du vendredi, identique chaque semaine.",
+      "explication_technique": "Le client envoie If-None-Match avec l'ETag qu'il connaît. Rien n'a changé : réponse sans body, le client réutilise sa copie.",
+      "famille": "3xx",
+      "propose_par": null,
+      "cree_le": "2026-11-17T09:00:00+01:00"
+    }
+  },
+  {
+    "model": "codes.statuscode",
+    "pk": 6,
+    "fields": {
+      "code": 400,
+      "nom_officiel": "Bad Request",
+      "titre_derja": "Chnowa t9oul enti ?!",
+      "situation": "Une commande incompréhensible au comptoir de fricassé.",
+      "explication_technique": "La requête est invalide : JSON cassé, champ obligatoire manquant ou valeur absurde.",
+      "famille": "4xx",
+      "propose_par": null,
+      "cree_le": "2026-11-17T09:00:00+01:00"
+    }
+  },
+  {
+    "model": "codes.statuscode",
+    "pk": 7,
+    "fields": {
+      "code": 401,
+      "nom_officiel": "Unauthorized",
+      "titre_derja": "Chkoun enti ?",
+      "situation": "Le gardien de l'université demande ta carte d'étudiant.",
+      "explication_technique": "Le serveur ne sait pas qui tu es. Envoie un token valide dans l'en-tête Authorization.",
+      "famille": "4xx",
+      "propose_par": null,
+      "cree_le": "2026-11-17T09:00:00+01:00"
+    }
+  },
+  {
+    "model": "codes.statuscode",
+    "pk": 8,
+    "fields": {
+      "code": 403,
+      "nom_officiel": "Forbidden",
+      "titre_derja": "Hedhom lel dhyouf !",
+      "situation": "Maman sait très bien qui tu es, mais les gâteaux sont pour les invités.",
+      "explication_technique": "Le serveur sait qui tu es, mais tu n'as pas la permission. Te reconnecter n'y changera rien.",
+      "famille": "4xx",
+      "propose_par": null,
+      "cree_le": "2026-11-17T09:00:00+01:00"
+    }
+  },
+  {
+    "model": "codes.statuscode",
+    "pk": 9,
+    "fields": {
+      "code": 404,
+      "nom_officiel": "Not Found",
+      "titre_derja": "Mal9itouch",
+      "situation": "Tu cherches ta chaussette depuis 20 minutes, maman la trouve en 2 secondes.",
+      "explication_technique": "Aucune ressource ne correspond à cette URL.",
+      "famille": "4xx",
+      "propose_par": null,
+      "cree_le": "2026-11-17T09:00:00+01:00"
+    }
+  },
+  {
+    "model": "codes.statuscode",
+    "pk": 10,
+    "fields": {
+      "code": 405,
+      "nom_officiel": "Method Not Allowed",
+      "titre_derja": "Cash bark",
+      "situation": "Tu veux payer par carte chez l'épicier du coin.",
+      "explication_technique": "La ressource existe mais refuse ce verbe HTTP. L'en-tête Allow liste les méthodes acceptées.",
+      "famille": "4xx",
+      "propose_par": null,
+      "cree_le": "2026-11-17T09:00:00+01:00"
+    }
+  },
+  {
+    "model": "codes.statuscode",
+    "pk": 11,
+    "fields": {
+      "code": 418,
+      "nom_officiel": "I'm a teapot",
+      "titre_derja": "Ena berrad, mouch machine café",
+      "situation": "La théière refuse de faire un espresso.",
+      "explication_technique": "Poisson d'avril de 1998 (RFC 2324) : une théière refuse de faire du café. Les développeurs l'ont gardé pour le plaisir.",
+      "famille": "4xx",
+      "propose_par": null,
+      "cree_le": "2026-11-17T09:00:00+01:00"
+    }
+  },
+  {
+    "model": "codes.statuscode",
+    "pk": 12,
+    "fields": {
+      "code": 429,
+      "nom_officiel": "Too Many Requests",
+      "titre_derja": "Yezzi, ta3abtni !",
+      "situation": "Cinquante fois « Mama, mama, mama ».",
+      "explication_technique": "Trop de requêtes en peu de temps : le serveur limite le débit (throttling). Retry-After dit quand réessayer.",
+      "famille": "4xx",
+      "propose_par": null,
+      "cree_le": "2026-11-17T09:00:00+01:00"
+    }
+  },
+  {
+    "model": "codes.statuscode",
+    "pk": 13,
+    "fields": {
+      "code": 500,
+      "nom_officiel": "Internal Server Error",
+      "titre_derja": "Tay7et",
+      "situation": "Coupure de courant au café en plein match.",
+      "explication_technique": "Une exception non gérée a planté le serveur. Le client n'y est pour rien.",
+      "famille": "5xx",
+      "propose_par": null,
+      "cree_le": "2026-11-17T09:00:00+01:00"
+    }
+  },
+  {
+    "model": "codes.statuscode",
+    "pk": 14,
+    "fields": {
+      "code": 502,
+      "nom_officiel": "Bad Gateway",
+      "titre_derja": "El samsar ghaltek",
+      "situation": "L'intermédiaire jure que l'appartement est libre, c'est faux.",
+      "explication_technique": "Une passerelle (proxy) a reçu une réponse invalide du serveur qui est derrière elle.",
+      "famille": "5xx",
+      "propose_par": null,
+      "cree_le": "2026-11-17T09:00:00+01:00"
+    }
+  },
+  {
+    "model": "codes.statuscode",
+    "pk": 15,
+    "fields": {
+      "code": 503,
+      "nom_officiel": "Service Unavailable",
+      "titre_derja": "Erja3 ghodwa",
+      "situation": "Le guichet est fermé, l'employé lit son journal.",
+      "explication_technique": "Le serveur est temporairement indisponible (maintenance, surcharge). Retry-After dit quand revenir.",
+      "famille": "5xx",
+      "propose_par": null,
+      "cree_le": "2026-11-17T09:00:00+01:00"
+    }
+  },
+  {
+    "model": "codes.statuscode",
+    "pk": 16,
+    "fields": {
+      "code": 504,
+      "nom_officiel": "Gateway Timeout",
+      "titre_derja": "El louage mazel ma t3abech",
+      "situation": "Tu attends que le louage se remplisse, il ne part jamais.",
+      "explication_technique": "La passerelle a attendu trop longtemps la réponse du serveur derrière elle.",
+      "famille": "5xx",
+      "propose_par": null,
+      "cree_le": "2026-11-17T09:00:00+01:00"
+    }
+  }
+]
