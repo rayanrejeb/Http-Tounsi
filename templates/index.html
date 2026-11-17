@@ -1,0 +1,83 @@
+{% load static %}<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HTTP Tounsi</title>
+  <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <header class="bar">
+    <form id="req" class="bar-row" autocomplete="off">
+      <a class="brand" href="/" title="HTTP Tounsi">
+        <span class="brand-star" aria-hidden="true"></span>
+        <span class="brand-http">HTTP</span><span class="brand-tounsi">Tounsi</span>
+      </a>
+      <select id="method" class="method m-GET" aria-label="Méthode HTTP">
+        <option>GET</option><option>POST</option><option>PUT</option><option>PATCH</option><option>DELETE</option>
+      </select>
+      <label class="url">
+        <span class="origin" id="origin">http://127.0.0.1:8000</span>
+        <input id="path" value="/api/slides/1/" spellcheck="false" aria-label="Chemin de l'URL">
+      </label>
+      <button class="send" id="send" type="submit">Ab3ath <span aria-hidden="true">➤</span></button>
+    </form>
+
+    <div class="bar-row bar-sub">
+      <button type="button" id="toggle-body" class="chip-btn" aria-expanded="false" aria-controls="body-panel">
+        <span class="caret">▸</span> Body <code>{ }</code> <span id="body-dot" class="dot" hidden></span>
+      </button>
+      <label class="token">
+        <span aria-hidden="true">🔑</span>
+        <input id="token" placeholder="Token  (Alt+A / Alt+E)" spellcheck="false">
+      </label>
+      <nav class="quick">
+        <button type="button" class="chip-btn" data-go="GET /api/codes/">Galerie</button>
+        <button type="button" class="chip-btn" data-slide="-1" title="Slide précédente (←)">◂</button>
+        <span id="slide-pos" class="slide-pos">1</span>
+        <button type="button" class="chip-btn" data-slide="1" title="Slide suivante (→)">▸</button>
+      </nav>
+    </div>
+
+    <div id="body-panel" class="body-panel" hidden>
+      <label class="panel-field grow">
+        <span>Body <small>(JSON, ou XML pour SOAP)</small></span>
+        <textarea id="body" rows="5" spellcheck="false" placeholder='{"code": 777, "titre_derja": "…"}'></textarea>
+      </label>
+      <label class="panel-field">
+        <span>En-têtes en plus <small>(un par ligne)</small></span>
+        <textarea id="extra-headers" rows="5" spellcheck="false" placeholder='If-None-Match: "abc123"'></textarea>
+      </label>
+    </div>
+  </header>
+
+  <div class="meta" id="meta" hidden>
+    <span class="status-pill" id="m-status"></span>
+    <span class="meta-item" id="m-time"></span>
+    <span class="meta-item" id="m-size"></span>
+    <span class="meta-spacer"></span>
+    <button type="button" class="chip-btn" id="replay-etag" hidden>↻ Rejouer avec If-None-Match</button>
+    <button type="button" class="chip-btn" id="toggle-format" hidden>Format : <b id="fmt-label">JSON</b></button>
+    <div class="switch" role="tablist" aria-label="Vue">
+      <button type="button" role="tab" data-view="tounsi" aria-selected="true">Vue Tounsi</button>
+      <button type="button" role="tab" data-view="raw" aria-selected="false">Vue brute</button>
+    </div>
+  </div>
+
+  <main id="stage" class="stage">
+    <div id="tounsi" class="view"></div>
+    <div id="raw" class="view" hidden></div>
+    <div id="loading" class="loading" hidden>
+      <div class="dots"><i></i><i></i><i></i></div>
+      <p id="loading-text">Nestannaw fil serveur…</p>
+    </div>
+  </main>
+
+  <div id="toasts" class="toasts" aria-live="polite"></div>
+
+  {# images de sections (null si le fichier manque), tokens (seulement depuis 127.0.0.1), requêtes de démo par code #}
+  {{ config|json_script:"config" }}
+  <script src="{% static 'js/app.js' %}"></script>
+</body>
+</html>
